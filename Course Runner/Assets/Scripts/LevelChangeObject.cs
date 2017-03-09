@@ -4,9 +4,11 @@ using UnityEngine.SceneManagement;
 
 public class LevelChangeObject : MonoBehaviour
 {
+	public string sceneToLoad;
+
 	void OnTriggerEnter()
 	{
-		SceneManager.LoadScene ("EndScene"); // Changes level when the pickup is collected.
+		SceneManager.LoadScene(sceneToLoad); // Changes level when the pickup is collected.
 		Destroy(gameObject);
 	}
 }

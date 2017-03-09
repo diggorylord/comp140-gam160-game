@@ -4,11 +4,13 @@ using UnityEngine.SceneManagement;
 
 public class LevelReset : MonoBehaviour
 {
+	public string sceneToLoad;
+
 	void OnTriggerEnter(Collider other)
 	{
 		if (other.tag == "Player")
 		{
-			SceneManager.LoadScene ("Level 1");
+			SceneManager.LoadScene (sceneToLoad);
 		}
 	}
 }

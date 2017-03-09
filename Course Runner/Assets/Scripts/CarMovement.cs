@@ -11,7 +11,6 @@ public class CarMovement : MonoBehaviour
 	public float turnSpeed;
 
 	private bool gravity = false;
-	private Vector3 flipDirection;
 	private Vector3 lookDirection;
 	private Rigidbody carBody;
 
@@ -24,7 +23,6 @@ public class CarMovement : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
 	{
-		flipDirection = new Vector3 (0f, 0f, -10f); //  Sets the flip direction for when the gravity is swapped.
 		transform.position += transform.forward * speed * Time.deltaTime; // Moves the player continuously.
 		lookDirection = new Vector3 (0f, -1f, 0f); // Sets the look direction for turning.
 
@@ -53,7 +51,7 @@ public class CarMovement : MonoBehaviour
 			if (gotGravityPowerup == true)
 			{
 				ToggleGravity ();
-				transform.RotateAround (transform.position, flipDirection, 180f);
+				transform.RotateAround (transform.position, transform.forward, 180f);
 				gotGravityPowerup = false;
 			}
 		}
