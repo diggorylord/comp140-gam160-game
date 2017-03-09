@@ -62,6 +62,14 @@ public class CarMovement : MonoBehaviour
 		gravity = !gravity; // Gravity bool toggle. Allows gravity bool to be set to true or false using the E key above.
 	}
 
+	void OnTriggerEnter(Collider other)
+	{
+		if (other.tag == "Track") 
+		{
+			transform.rotation = other.transform.rotation;
+		}
+	}
+
 	void FixedUpdate ()
 	{
 		// This here sets the gravity to be pushing down on the player if gravity direction is true. Like normal gravity on earth.
