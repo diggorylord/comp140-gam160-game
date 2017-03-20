@@ -66,7 +66,7 @@ public class CarMovement : MonoBehaviour
 	{
 		if (other.tag == "Track") 
 		{
-			transform.rotation = other.transform.rotation;
+			carBody.rotation = other.transform.rotation; // Changes the car's rotation to be the same as the track it is on so that you more smoother on the tracks. Doesnt allow you to go backwards through the level though.
 		}
 	}
 
