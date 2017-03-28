@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class CarMovement : MonoBehaviour
 {
@@ -9,6 +11,9 @@ public class CarMovement : MonoBehaviour
 	public bool gotGravityPowerup = false;
 	public float gravityValue = 10f;
 	public float turnSpeed;
+	public float fuelUseModifier;
+	public Image FuelBarFillImage;
+	public float maxFuelAmount = 100f;
 
 	private bool gravity = false;
 	private Vector3 lookDirection;
@@ -23,17 +28,21 @@ public class CarMovement : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
 	{
+		maxFuelAmount -= fuelUseModifier * Time.deltaTime;
 		transform.position += transform.forward * speed * Time.deltaTime; // Moves the player continuously.
 		lookDirection = new Vector3 (0f, -1f, 0f); // Sets the look direction for turning.
+		FuelBarFillImage.fillAmount = maxFuelAmount / 100f;
 
 		// Movement controls below.
 		if (Input.GetKeyDown (KeyCode.W)) 
 		{
 			speed = speed * speedMultiplier; // Makes player go faster.
+			fuelUseModifier = fuelUseModifier * 5f;
 		}
 		if (Input.GetKeyUp(KeyCode.W)) 
 		{
 			speed = speed/speedMultiplier; // Slows player down.
+			fuelUseModifier = fuelUseModifier / 5f;
 		}
 
 		if (Input.GetKey (KeyCode.A))
@@ -55,19 +64,17 @@ public class CarMovement : MonoBehaviour
 				gotGravityPowerup = false;
 			}
 		}
+
+		if (maxFuelAmount <= 0) 
+		{
+			string currentLevel = SceneManager.GetActiveScene ().name;
+			SceneManager.LoadScene (currentLevel);
+		}
 	}
 
 	void ToggleGravity ()
 	{
 		gravity = !gravity; // Gravity bool toggle. Allows gravity bool to be set to true or false using the E key above.
-	}
-
-	void OnTriggerEnter(Collider other)
-	{
-		if (other.tag == "Track") 
-		{
-			carBody.rotation = other.transform.rotation; // Changes the car's rotation to be the same as the track it is on so that you more smoother on the tracks. Doesnt allow you to go backwards through the level though.
-		}
 	}
 
 	void FixedUpdate ()
