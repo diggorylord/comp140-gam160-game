@@ -49,8 +49,10 @@
      <Compile Include="Assets\Scripts\FuelRefillPowerup.cs" />
      <Compile Include="Assets\Scripts\GUIControl.cs" />
      <Compile Include="Assets\Scripts\GravityPowerup.cs" />
+     <Compile Include="Assets\Scripts\LaserRotatorScript.cs" />
      <Compile Include="Assets\Scripts\LevelChangeObject.cs" />
      <Compile Include="Assets\Scripts\LevelReset.cs" />
+     <Compile Include="Assets\Scripts\TutorialTextChanger.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>

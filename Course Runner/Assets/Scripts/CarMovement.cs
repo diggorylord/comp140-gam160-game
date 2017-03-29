@@ -14,6 +14,7 @@ public class CarMovement : MonoBehaviour
 	public float fuelUseModifier;
 	public Image FuelBarFillImage;
 	public float maxFuelAmount = 100f;
+	public GameObject gravityPowerupImage;
 
 	private bool gravity = false;
 	private Vector3 lookDirection;
@@ -61,6 +62,7 @@ public class CarMovement : MonoBehaviour
 			{
 				ToggleGravity ();
 				transform.RotateAround (transform.position, transform.forward, 180f);
+				gravityPowerupImage.SetActive (false);
 				gotGravityPowerup = false;
 			}
 		}
