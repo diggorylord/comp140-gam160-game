@@ -1,14 +1,15 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\CarMovement.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\LevelReset.cs">
     <Files>
       <File FileName="Assets\Scripts\LevelChangeObject.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\GravityPowerup.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\LevelReset.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\FuelRefillPowerup.cs" Line="13" Column="62" />
-      <File FileName="Assets\Scripts\TutorialTextChanger.cs" Line="9" Column="30" />
-      <File FileName="Assets\Scripts\LaserRotatorScript.cs" Line="25" Column="1" />
-      <File FileName="Assets\Scripts\CarMovement.cs" Line="65" Column="43" />
+      <File FileName="Assets\Scripts\LevelReset.cs" Line="14" Column="3" />
+      <File FileName="Assets\Scripts\FuelRefillPowerup.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\TutorialTextChanger.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\LaserRotatorScript.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\CarMovement.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\StartLevelUI.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
