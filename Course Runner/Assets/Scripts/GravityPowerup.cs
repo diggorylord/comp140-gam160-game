@@ -18,6 +18,7 @@ public class GravityPowerup : MonoBehaviour
 		if (other.tag == "Player") 
 		{
 			carScript.gotGravityPowerup = true; // Sets the gotgravitypowerup bool to be true. This allows the use of the powerup so gravity cant be swapped at any time.
+			// only while the player has the powerup can grqavity be swapped.
 			gravityPowerupImage.SetActive (true);
 			Destroy (gameObject); // This just destroys the powerup on impact.
 		}

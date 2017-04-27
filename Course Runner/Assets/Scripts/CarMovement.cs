@@ -7,7 +7,8 @@ using UnityEngine.UI;
 
 public class CarMovement : MonoBehaviour
 {
-	//Public values for gravity and speed for turning and moving.
+	//Public values for gravity and speed for turning and moving. includes stuff like the serialport string to work with the controller
+
 
 	public float speedMultiplier;
 	public bool gotGravityPowerup = false;
@@ -53,15 +54,15 @@ public class CarMovement : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
 	{
-		maxFuelAmount -= fuelUseModifier * Time.deltaTime;
+		maxFuelAmount -= fuelUseModifier * Time.deltaTime; // This reduces the fuel amount during each second.
 		transform.position += transform.forward * speed * Time.deltaTime; // Moves the player continuously.
 		lookDirection = new Vector3 (0f, -1f, 0f); // Sets the look direction for turning.
-		FuelBarFillImage.fillAmount = maxFuelAmount / 100f;
-		string data = serialPort.ReadLine();
-		distance = int.Parse (data);
-		Debug.Log (distance);
+		FuelBarFillImage.fillAmount = maxFuelAmount / 100f; // this is what reduces it visually on screen.
+		string data = serialPort.ReadLine(); // This reads the serialport and puts the data it reads into a string.
+		distance = int.Parse (data); // this converts that string of data into an integer so that it can be used within the code as a value.
+		Debug.Log (distance); // this is just to check the distance read, so that I can debug any lag.
 
-		if (distance >= 10 && distance < 15) 
+		if (distance >= 10 && distance < 15) //checks if the distance read is within thee values of 10 to 15. if so it increases the speed. if not it returns the speed to the original value.
 		{
 			speed = speed += 5f;; // Makes player go faster.
 			fuelUseModifier = fuelUseModifier += 1f;
@@ -72,6 +73,8 @@ public class CarMovement : MonoBehaviour
 			fuelUseModifier = 2f;
 		}
 
+		/* This part checks if the distance is within 20-25cm away from the sensor. if so it turns left.
+		 * If the value is between 30-35cm away then it turns the player right */
 		if (distance >= 20 && distance < 25) 
 		{
 			transform.RotateAround (transform.position, lookDirection, turnSpeed); // Turns player to the left.
@@ -81,18 +84,20 @@ public class CarMovement : MonoBehaviour
 		{
 			transform.RotateAround (transform.position, -lookDirection, turnSpeed); // Turns player to the right.
 		}
+
 		// This if statement below is what allows gravity to be swapped.
+		// It checks the distance value and if it is inbetween the values of 40-45 it swaps the gravity, provided you have the pickup.
 		if (distance >= 40 && distance < 45) 
 		{
 			if (gotGravityPowerup == true)
 			{
 				ToggleGravity ();
-				transform.RotateAround (transform.position, transform.forward, 180f);
-				gravityPowerupImage.SetActive (false);
+				transform.RotateAround (transform.position, transform.forward, 180f); // flips the player upside down.
+				gravityPowerupImage.SetActive (false); // removes the powerup from the player.
 				gotGravityPowerup = false;
 			}
 		}
-
+		 //resets the scene if they run of fuel.
 		if (maxFuelAmount <= 0) 
 		{
 			string currentLevel = SceneManager.GetActiveScene ().name;

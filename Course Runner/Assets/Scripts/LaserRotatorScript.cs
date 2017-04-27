@@ -7,6 +7,7 @@ public class LaserRotatorScript : MonoBehaviour
 	public Vector3 spinDirection;
 	public float speed;
 
+	//resets the scene if the player collides with the laser.
 	void OnTriggerEnter(Collider other)
 	{
 		if (other.tag == "Player")
@@ -15,10 +16,9 @@ public class LaserRotatorScript : MonoBehaviour
 			SceneManager.LoadScene (currentScene);
 		}
 	}
-	
-	// Update is called once per frame
+
 	void Update ()
 	{
-		transform.RotateAround (transform.position, spinDirection, speed * Time.deltaTime);
+		transform.RotateAround (transform.position, spinDirection, speed * Time.deltaTime); //Spins the lasers around in a direction decided in the inspector.
 	}
 }
