@@ -75,3 +75,6 @@ The fun of this controller idea comes when you are in the swapped gravity state.
 of the character/player become inverted so that you then have to move the left stick forward
 to go left and the right stick forward to right. This makes the player have to think about
 which way to push the sticks as pushing them both forward would still make you go faster.
+
+Link to pictures of arduino working.
+https://drive.google.com/open?id=0B3gfExOamt5mZ3BVeXVyNGhTOUk
